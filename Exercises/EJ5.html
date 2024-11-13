@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Unit Conversions</title>
+</head>
+<body>
+<section id="home">
+    <header>Unit Conversions</header>
+    <nav>
+        <a href="#temperature"><button>Temperature</button></a>
+        <a href="#weight"><button>Weight</button></a>
+        <a href="#distance"><button>Distance</button></a>
+    </nav>
+</section>
+<div id="allSections">
+    <section id="temperature">
+        <div id="temp">
+            <figure>
+                <img src="images/thermo.jpg" alt="Temperature">
+                <figcaption>Celcius to Farenheit Conversion</figcaption>
+                <article>
+                    <fieldset>
+                        <legend>Temperature</legend>
+                        <label for="Temperature">Celcius</label><br/>
+                        <input type="number" id="c"><br/>
+                        <input type="button" value="Convert" onclick="convertTemp()"><br/>
+                        <input type="number" id="f"><br/>
+                        <label for="Temperature">Farenheit</label>
+                    </fieldset>
+                </article>
+            </figure>
+        </div>
+    </section>
+</div>
+</body>
+</html>
