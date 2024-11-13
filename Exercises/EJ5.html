@@ -17,9 +17,11 @@
     <section id="temperature">
         <div id="temp">
             <figure>
-                <img src="images/thermo.jpg" alt="Temperature">
+                <img src="../images/thermo.png" alt="Temperature" width="200">
                 <figcaption>Celcius to Farenheit Conversion</figcaption>
+            </figure>
                 <article>
+
                     <fieldset>
                         <legend>Temperature</legend>
                         <label for="Temperature">Celcius</label><br/>
@@ -29,9 +31,62 @@
                         <label for="Temperature">Farenheit</label>
                     </fieldset>
                 </article>
-            </figure>
+            <aside>
+                To convert from Celcius to Farenheit, use this formula replacing C with the temperature in Celcius: (C * 9/5) + 32
+            </aside>
         </div>
     </section>
+
+    <section id="weight">
+        <div id="wgh">
+        <figure>
+            <img src="../images/weight.png" alt="Weight" width="200">
+            <figcaption>Kilograms to Pounds Conversion</figcaption>
+        </figure>
+
+        <article>
+            <fieldset>
+                <legend>Weight</legend>
+                <label for="Weight">Kilograms</label><br/>
+                <input type="number" id="kg"><br/>
+                <input type="button" value="Convert" onclick="convertWeight()"><br/>
+                <input type="number" id="lb"><br/>
+                <label for="Weight">Pounds</label>
+            </fieldset>
+        </article>
+        <aside>
+            To convert from Kilograms to Pounds, use this formula replacing K with the weight in Kilograms: K * 2.20462
+        </aside>
+        </div>
+    </section>
+
+    <section id="distance">
+        <div id="dist">
+        <figure>
+            <img src="../images/speedo.png" alt="Distance" width="200">
+            <figcaption>Kilometers to Miles Conversion</figcaption>
+        </figure>
+
+        <article>
+            <fieldset>
+                <legend>Distance</legend>
+                <label for="Distance">Kilometers</label><br/>
+                <input type="number" id="km"><br/>
+                <input type="button" value="Convert" onclick="convertDistance()"><br/>
+                <input type="number" id="mi"><br/>
+                <label for="Distance">Miles</label>
+            </fieldset>
+        </article>
+        <aside>
+            To convert from Kilometers to Miles, use this formula replacing K with the distance in Kilometers: K * 0.621371
+        </aside>
+        </div>
+    </section>
+</div>
+<div id="goHome">
+    <a href="#home">
+        <img src="../images/home.png" width="40"/>
+    </a>
 </div>
 </body>
 </html>
