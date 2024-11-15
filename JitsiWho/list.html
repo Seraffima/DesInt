@@ -1,0 +1,26 @@
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <title>JitsiWho</title>
+        <link rel="stylesheet" type="text/css" href="styles.css">
+        <link href='https://fonts.googleapis.com/css?family=Lexend' rel='stylesheet'>
+    </head>
+    <body>
+    <div id="sidemenu">
+        <div class="menuitem">
+            <a href="index.html">Inicio</a>
+            <a href="list.html">Lista</a>
+            <a href="att.html">Asistencia</a>
+        </div>
+    </div>
+    <div id="content">
+        <h1>Agregar Lista de Jitsi</h1>
+        <p>Arrastre un txt con la lista de alumnos sobre el contenedor inferior.</p>
+
+        <div id="dropzone" ondrop="drop(event)" ondragover="allowDrop(event)">
+            <input type="file" id="fileuploader">
+        </div>
+    </div>
+    <script src="script.js"></script>
+    </body>
+</html>
