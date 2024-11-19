@@ -1,53 +1,56 @@
-import { classDang1 } from './clases.js';
+import { classDang1, classDang2 } from './clases.js';
 
-function createStudentDiv(firstName, lastName, imageUrl) {
-    // Create the main div
+function createStudentDiv(firstName, lastName, imageUrl, isPresent) {
     const studentDiv = document.createElement('div');
     studentDiv.className = 'student';
 
-    // Create and append the image
     const img = document.createElement('img');
     img.src = imageUrl;
     img.alt = `${firstName} ${lastName}`;
     studentDiv.appendChild(img);
 
-    // Create and append the name
     const nameDiv = document.createElement('div');
     nameDiv.className = 'name';
-    nameDiv.textContent = `${firstName} ${lastName}`;
+    nameDiv.textContent = `${lastName}, ${firstName}`;
     studentDiv.appendChild(nameDiv);
 
-    // Create and append the checkboxes
-    const labels = ['J', 'I', 'R'];
-    labels.forEach(label => {
-        const checkbox = document.createElement('input');
-        checkbox.type = 'checkbox';
-        checkbox.id = label;
-        checkbox.name = label;
+  const labels = ['I', 'J', 'R'];
+  labels.forEach(label => {
+      const checkbox = document.createElement('input');
+      checkbox.type = 'checkbox';
+      checkbox.id = label;
+      checkbox.name = label;
+      if (label === 'I' && !isPresent) {
+          checkbox.checked = true;
+      }
 
-        const checkboxLabel = document.createElement('label');
-        checkboxLabel.htmlFor = label;
-        checkboxLabel.textContent = label;
+      const checkboxLabel = document.createElement('label');
+      checkboxLabel.htmlFor = label;
+      checkboxLabel.textContent = label;
 
-        studentDiv.appendChild(checkbox);
-        studentDiv.appendChild(checkboxLabel);
-    });
+      studentDiv.appendChild(checkbox);
+      studentDiv.appendChild(checkboxLabel);
+  });
 
     return studentDiv;
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Get the grid element
     const grid = document.getElementById('grid');
-    console.log('Grid element:', grid);
+    const presentStudents = new Set(JSON.parse(localStorage.getItem('presentStudents')));
+    const className = localStorage.getItem('className');
+    let students = [];
 
-    // Check if classDang1 is imported correctly
-    console.log('classDang1:', classDang1);
+    if (className === 'classDang1') {
+        students = classDang1.getStudents();
+    } else if (className === 'classDang2') {
+        students = classDang2.getStudents();
+    }
 
-    // Iterate over the students in classDang1 and create a div for each student
-    classDang1.getStudents().forEach(student => {
-        console.log('Creating div for student:', student);
-        const studentDiv = createStudentDiv(student.firstName, student.lastName, student.image);
+    students.forEach(student => {
+        const fullName = `${student.firstName} ${student.lastName}`.trim();
+        const isPresent = presentStudents.has(fullName);
+        const studentDiv = createStudentDiv(student.firstName, student.lastName, student.image, isPresent);
         grid.appendChild(studentDiv);
     });
 });

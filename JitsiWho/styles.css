@@ -36,8 +36,8 @@ body{
 #dropzone{
     border: 2px dashed #3498db;
     border-radius: 5px;
-    width: 70%;
-    height: 70%;
+    width: 50%;
+    height: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
