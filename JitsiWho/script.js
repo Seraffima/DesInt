@@ -17,7 +17,6 @@ function detectClass(content) {
     const lines = content.split('\n');
     const presentStudents = new Set();
     let className = '';
-
     const classDang1Students = new Set(classDang1.getStudents().map(student => `${student.firstName} ${student.lastName}`.trim()));
     const classDang2Students = new Set(classDang2.getStudents().map(student => `${student.firstName} ${student.lastName}`.trim()));
 

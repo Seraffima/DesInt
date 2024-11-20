@@ -9,8 +9,8 @@ class Student {
 class StudentList {
     constructor(name) {
         this.name = name;
-        this.students = [];
     }
+      this.students = [];
 
     addStudent(firstName, lastName, image) {
         this.students.push({ firstName, lastName, image });

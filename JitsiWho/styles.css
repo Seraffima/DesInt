@@ -44,6 +44,7 @@ body{
     }
 
 #grid{
+width: 800px;
 display: flex;
 flex-wrap: wrap;}
 

@@ -1,19 +1,23 @@
 import { classDang1, classDang2 } from './clases.js';
 
+//Crear div de estudiante
 function createStudentDiv(firstName, lastName, imageUrl, isPresent) {
     const studentDiv = document.createElement('div');
     studentDiv.className = 'student';
 
+//Agrega la imagen del estudiante
     const img = document.createElement('img');
     img.src = imageUrl;
     img.alt = `${firstName} ${lastName}`;
     studentDiv.appendChild(img);
 
+//Agrega el nombre del estudiante
     const nameDiv = document.createElement('div');
     nameDiv.className = 'name';
     nameDiv.textContent = `${lastName}, ${firstName}`;
     studentDiv.appendChild(nameDiv);
 
+//Agrega los checkboxes de la asistencia
   const labels = ['I', 'J', 'R'];
   labels.forEach(label => {
       const checkbox = document.createElement('input');
