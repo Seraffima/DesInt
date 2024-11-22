@@ -4,12 +4,13 @@ body{
     padding: 0;
     font-family: Lexend;
     background-color: #A78295;
+    display: flex;
     }
 
 #sidemenu{
     background-color: #3F2E3E;
     color: #ecf0f1;
-    width: 200px;
+    width: 400px;
     height: 100%;
     position: fixed;
     top: 0;
@@ -19,8 +20,9 @@ body{
     padding-top: 20px;
     }
 #content{
-    margin-left: 200px;
+    margin-left: 400px;
     padding: 20px;
+    flex-grow: 1;
     }
 #sidemenu a{
     padding: 6px 8px 6px 16px;

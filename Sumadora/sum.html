@@ -1,0 +1,31 @@
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Sumadora</title>
+    <link rel="stylesheet" href="sum.css">
+</head>
+<body>
+<h1>Sumadora</h1>
+<div id="calc">
+    <div id="numDisplay"><input type="text" id="display" disabled/></div>
+    <div id="numPad">
+        <input type="button" class="num" id="num7" value="7" onclick="handleClick(this)">
+        <input type="button" class="num" id="num8" value="8" onclick="handleClick(this)">
+        <input type="button" class="num" id="num9" value="9" onclick="handleClick(this)">
+        <input type="button" class="num" id="num4" value="4" onclick="handleClick(this)">
+        <input type="button" class="num" id="num5" value="5" onclick="handleClick(this)">
+        <input type="button" class="num" id="num6" value="6" onclick="handleClick(this)">
+        <input type="button" class="num" id="num1" value="1" onclick="handleClick(this)">
+        <input type="button" class="num" id="num2" value="2" onclick="handleClick(this)">
+        <input type="button" class="num" id="num3" value="3" onclick="handleClick(this)">
+        <input type="button" class="num" id="num0" value="0" onclick="handleClick(this)">
+        <input type="button" class="num" id="opSum" value="+" onclick="sum()" disabled>
+        <input type="button" class="num" id="opEq" value="=" onclick="result()" disabled>
+    </div>
+    <div id="resPad">
+        <input type="button" id="opRes" value="Reset" onclick="reset()">
+    </div>
+</div>
+<script src="sum.js"></script>
+</body>
+</html>
