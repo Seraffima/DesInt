@@ -1,0 +1,42 @@
+<html>
+
+<head>
+    <title>FishWeb</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+
+    <div class="header">
+        <h1>FishWeb</h1>
+    </div>
+
+    <div class="navbar">
+        <a href="#">Fisher Profile</a>
+        <a href="#">Catch-It</a>
+        <a href="#">Fishcyclopedia</a>
+    </div>
+
+    <div class="row">
+        <div class="column side">
+            <h2 id="user">User</h2>
+            <img src="img_avatar.jpg" alt="Avatar" id="avatar">
+        </div>
+        <div class="column middle">
+            <h2>Recent Activity</h2>
+            <div class="userfeed">
+                <p style="color: grey">Recent activity</p>
+            </div>
+        </div>
+        <div class="column side">
+            <h2>Log-in</h2>
+            <form action="login.php" method="post">
+                <label for="username">Username:</label><br>
+                <input type="text" id="username" name="username"><br>
+                <label for="password">Password:</label><br>
+                <input type="password" id="password" name="password"><br><br>
+                <input type="submit" value="Submit">
+        </div>
+    </div>
+
+</body>
+</html>
