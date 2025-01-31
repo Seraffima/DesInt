@@ -1,0 +1,14 @@
+[
+  {
+    "id": 1,
+    "user_id": 1,
+    "fish_name": "Salmon",
+    "date": "2023-10-01"
+  },
+  {
+    "id": 2,
+    "user_id": 2,
+    "fish_name": "Trout",
+    "date": "2023-10-02"
+  }
+]

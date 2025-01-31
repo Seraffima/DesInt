@@ -1,26 +1,16 @@
 <?php
-session_start();
+$users = json_decode(file_get_contents('users.json'), true);
 
-// Connect to SQLite database
-$db = new PDO('sqlite:data.db');
+$username = $_POST['username'];
+$password = $_POST['password'];
 
-// Check if form is submitted
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $username = $_POST['username'];
-    $password = $_POST['password'];
+$user = array_filter($users, function($user) use ($username, $password) {
+    return $user['username'] === $username && $user['password'] === $password;
+});
 
-    // Prepare and execute query
-    $stmt = $db->prepare('SELECT * FROM users WHERE username = :username');
-$stmt->bindParam(':username', $username);
-$stmt->execute();
-$user = $stmt->fetch(PDO::FETCH_ASSOC);
-
-// Verify password
-if ($user && password_verify($password, $user['password'])) {
-$_SESSION['username'] = $username;
-echo "Login successful!";
+if ($user) {
+    echo json_encode(['status' => 'success', 'user' => array_values($user)[0]]);
 } else {
-echo "Invalid username or password.";
-}
+    echo json_encode(['status' => 'error', 'message' => 'Invalid credentials']);
 }
 ?>

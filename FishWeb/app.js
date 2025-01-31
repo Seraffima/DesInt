@@ -1,33 +1,71 @@
-const initSqlJs = require('sql.js');
-
-const username_input = document.getElementById('username');
-const password_input = document.getElementById('password');
-
-initSqlJs().then(SQL => {
-    // Create or open the database
-    const db = new SQL.Database();
-
-    // Create a table for demonstration purposes
-    db.run("CREATE TABLE IF NOT EXISTS users (username TEXT, password TEXT);");
-
-    // Insert a sample user (for testing purposes)
-    db.run("INSERT INTO users (username, password) VALUES (?, ?);", ['testuser', 'testpass']);
+document.addEventListener('DOMContentLoaded', () => {
+    const loginButton = document.getElementById('loginButton');
+    const recentCatchesList = document.getElementById('recentCatchesList');
+    const fishList = document.getElementById('fishList');
 
     function login() {
-        var username = username_input.value;
-        var password = password_input.value;
-        const query = "SELECT * FROM users WHERE username = ? AND password = ?";
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
 
-        const result = db.exec(query, [username, password]);
-
-        if (result.length > 0) {
-            console.log('Login successful');
-        } else {
-            console.log('Login failed');
-        }
-        console.log(result);
+        fetch('login.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: `username=${username}&password=${password}`
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.status === 'success') {
+                alert('Login successful');
+            } else {
+                alert('Login failed');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
     }
 
-    // Attach the login function to a button click event (assuming you have a button with id 'loginButton')
-    document.getElementById('loginButton').addEventListener('click', login);
+    function fetchRecentCatches() {
+        fetch('recent_catches.php')
+            .then(response => {
+                if (!response.ok) {
+                    return response.text().then(text => {
+                        console.error('Error response:', text);
+                        throw new Error(text);
+                    });
+                }
+                return response.json();
+            })
+            .then(data => {
+                recentCatchesList.innerHTML = data.map(catchItem => `<p>${catchItem.fish_name} - ${catchItem.date}</p>`).join('');
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+    }
+
+    function fetchFishEncyclopedia() {
+        fetch('fish_encyclopedia.php')
+            .then(response => {
+                if (!response.ok) {
+                    return response.text().then(text => {
+                        console.error('Error response:', text);
+                        throw new Error(text);
+                    });
+                }
+                return response.json();
+            })
+            .then(data => {
+                fishList.innerHTML = data.map(fish => `<p>${fish.name} - ${fish.description}</p>`).join('');
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+    }
+
+    loginButton.addEventListener('click', login);
+    fetchRecentCatches();
+    fetchFishEncyclopedia();
 });
